@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleCrash.Views.PopUps.SelectItemView"
+             x:Name="_contentView">
+  <ContentView.Content>
+        <Grid HeightRequest="500"
+              WidthRequest="375">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0"
+                   Grid.Row="0"
+                   VerticalOptions="Center"
+                   Text="Select Item"
+                   FontSize="18"
+                   TextColor="Black"/>
+            <ListView Grid.Column="0"
+                      Grid.Row="1"
+                      Margin="4"
+                      ItemsSource="{Binding Items}"
+                      BackgroundColor="Transparent"
+                      SeparatorColor="Blue"
+                      SelectionMode="None">
+              <ListView.ItemTemplate>
+                  <DataTemplate>
+                      <ViewCell Height="50">
+                          <Grid x:Name="_gridCell"
+                                ColumnSpacing="0"
+                                RowSpacing="0"
+                                Padding="8"
+                                BackgroundColor="Transparent">
+                              <Grid.ColumnDefinitions>
+                                  <ColumnDefinition Width="*"/>
+                              </Grid.ColumnDefinitions>
+                              <Grid.RowDefinitions>
+                                  <RowDefinition Height="*"/>
+                              </Grid.RowDefinitions>
+                              <Label Grid.Column="0"
+                                     Grid.Row="0"
+                                     VerticalOptions="Center"
+                                     Text="{Binding Name}"
+                                     FontSize="16"
+                                     TextColor="Black"/>
+                          </Grid>
+                      </ViewCell>
+                  </DataTemplate>
+              </ListView.ItemTemplate>
+          </ListView>
+      </Grid>
+    </ContentView.Content>
+</ContentView>

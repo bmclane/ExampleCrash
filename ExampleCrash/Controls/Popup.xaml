@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExampleCrash.Controls.PopUp">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="TemplateForPopUp">
+                <Frame x:Name="_framePopup" 
+                       BackgroundColor="{TemplateBinding Parent.MaskColor}"                   
+                       CornerRadius="0"
+                       Padding="12">
+                    <Frame HasShadow="True"
+                           VerticalOptions="CenterAndExpand"
+                           HorizontalOptions="CenterAndExpand"
+                           Padding="1">
+                        <Grid>
+                            <ContentView VerticalOptions="FillAndExpand"
+                                         HorizontalOptions="FillAndExpand"
+                                         BackgroundColor="Transparent"
+                                         Content="{TemplateBinding Parent.PopUpContent}"
+                                         Padding="4,35,4,0"/>
+                            <Grid HeightRequest="25"
+                                  WidthRequest="100"
+                                  VerticalOptions="Start"
+                                  HorizontalOptions="Start"
+                                  Margin="8">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{TemplateBinding Parent.CloseCommand}"/>
+                                </Grid.GestureRecognizers>
+                                <StackLayout Orientation="Horizontal"
+                                             VerticalOptions="Start">
+                                    <Label VerticalOptions="Center"
+                                           FontSize="12"
+                                           TextColor="Black"
+                                           Text="Close"/>
+                                </StackLayout>
+                            </Grid>
+                         </Grid>
+                    </Frame>
+                </Frame>
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <ContentView ControlTemplate="{StaticResource TemplateForPopUp}"/>
+    </ContentView.Content>
+</ContentView>
